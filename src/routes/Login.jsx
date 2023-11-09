@@ -4,8 +4,9 @@ import { Auth } from '@supabase/auth-ui-react';
 import { ThemeSupa } from '@supabase/auth-ui-shared';
 import { createClient } from '@supabase/supabase-js';
 
+const AUTH_API = import.meta.env.VITE_AUTH_API;
 const AUTH_KEY = import.meta.env.VITE_AUTH_KEY;
-const supabase = createClient('', AUTH_KEY);
+const supabase = createClient(AUTH_API, AUTH_KEY);
 
 export default function Login() {
 	const [session, setSession] = useState(null);
