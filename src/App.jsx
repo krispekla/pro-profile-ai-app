@@ -1,8 +1,9 @@
 import './App.css';
 
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 function App() {
+	const navigate = useNavigate();
 	return (
 		<div className="ppai_app">
 			<nav>
@@ -10,8 +11,16 @@ function App() {
 					ProProfile<span className="logo_ai">AI</span>
 				</h1>
 				<div className="flex flex-row ml-auto mr-5">
-					<button className="btn btn-primary px-4 py-2 rounded shadow-lg bg-gray-700 text-gray-200">Login</button>
-					<button className="btn btn-primary px-4 py-2 rounded shadow-lg bg-gray-700 text-gray-200 ml-5">Logout</button>
+					<button
+						className="btn btn-primary px-4 py-2 rounded shadow-lg bg-gray-700 text-gray-200"
+						onClick={() => navigate('/login')}>
+						Login
+					</button>
+					<button
+						className="btn btn-primary px-4 py-2 rounded shadow-lg bg-gray-700 text-gray-200 ml-5"
+						onClick={() => navigate('/')}>
+						Logout
+					</button>
 					<button className="btn btn-primary px-4 py-2 rounded shadow-lg bg-gray-700 text-gray-200 ml-5">
 						<svg
 							xmlns="http://www.w3.org/2000/svg"
