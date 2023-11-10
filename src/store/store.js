@@ -1,9 +1,11 @@
-import { create } from 'zustand'
+import { create } from 'zustand';
 
-const testStore = create((set) => ({
-  bears: 0,
-  increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
-  removeAllBears: () => set({ bears: 0 }),
-}))
+const useStore = create((set) => ({
+	session: null,
+	bears: 0,
+	setSession: (session) => set({ session }),
+	increasePopulation: () => set((state) => ({ bears: state.bears + 1 })),
+	removeAllBears: () => set({ bears: 0 }),
+}));
 
-export default testStore
+export default useStore;

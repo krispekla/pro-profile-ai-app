@@ -1,18 +1,20 @@
-import { useEffect, useState } from 'react';
-
 import { Auth } from '@supabase/auth-ui-react';
 import { ThemeSupa } from '@supabase/auth-ui-shared';
 import { createClient } from '@supabase/supabase-js';
+import { useEffect } from 'react';
+import useStore from '../store/store';
 
 const AUTH_API = import.meta.env.VITE_AUTH_API;
 const AUTH_KEY = import.meta.env.VITE_AUTH_KEY;
 const supabase = createClient(AUTH_API, AUTH_KEY);
 
 export default function Login() {
-	const [session, setSession] = useState(null);
+	const session = useStore((state) => state.session);
+	const setSession = useStore((state) => state.setSession);
 
 	useEffect(() => {
 		supabase.auth.getSession().then(({ data: { session } }) => {
+			console.log(session);
 			setSession(session);
 		});
 
@@ -36,12 +38,7 @@ export default function Login() {
 		return (
 			<div>
 				Logged in!
-				<pre>
-					{Object.keys(session).map((key) => (
-						<code key={key}>{`${key}: ${JSON.stringify(session[key], null, 2)}`}</code>
-					))}
-				</pre>{' '}
-				<button onClick={()=> supabase.auth.signOut()}>Logout</button>
+				<button onClick={() => supabase.auth.signOut()}>Logout</button>
 			</div>
 		);
 	}
