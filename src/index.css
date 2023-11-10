@@ -1,9 +1,18 @@
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Merriweather&family=Montserrat:wght@400;700&family=Nunito&family=Open+Sans:wght@400;500;700&family=Raleway&family=Readex+Pro&family=Roboto:wght@100;300;400;500;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	font-family: 'Lato', sans-serif;
+	/* font-family: 'Merriweather', serif; */
+	/* font-family: 'Montserrat', sans-serif; */
+	/* font-family: 'Nunito', sans-serif; */
+	/* font-family: 'Open Sans', sans-serif; */
+	/* font-family: 'Raleway', sans-serif; */
+	/* font-family: 'Readex Pro', sans-serif;
+	font-family: 'Roboto', sans-serif; */
+
 	line-height: 1.5;
 	font-weight: 400;
 
