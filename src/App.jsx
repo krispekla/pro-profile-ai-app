@@ -30,8 +30,9 @@ function App() {
 					</button>
 				</div>
 			</nav>
-
-			<Outlet />
+			<div className="app_container">
+				<Outlet />
+			</div>
 		</div>
 	);
 }
