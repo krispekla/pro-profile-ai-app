@@ -4,10 +4,12 @@ import { Outlet } from 'react-router-dom';
 
 function App() {
 	return (
-		<>
-			<h1>Pro Profile AI</h1>
+		<div className="ppai_app">
+			<nav className="">
+				<h1>Pro Profile AI</h1>
+			</nav>
 			<Outlet />
-		</>
+		</div>
 	);
 }
 
