@@ -19,7 +19,7 @@ function App() {
 						onClick={() => navigate('/')}>
 						ProProfile<span className="logo_ai">AI</span>
 					</h1>
-					<div className="flex flex-row ml-auto mr-5">
+					<div className="ml-auto mr-5 flex flex-row">
 						<Button
 							variant={'secondary'}
 							onClick={() => navigate('/login')}>

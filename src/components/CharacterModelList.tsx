@@ -9,9 +9,9 @@ function CharacterModelList() {
 				<span className="text-slate-700">characters:</span>
 			</h2>
 			<div
-				className="border border-slate-600 h-72 w-full
-						bg-slate-50 rounded-xl my-3 pb-5 p-4 flex
-						space-x-4">
+				className="my-3 flex h-72 w-full
+						space-x-4 rounded-xl border border-slate-600 bg-slate-50 p-4
+						pb-5">
 				{[1, 2, 3].map((_, i) => (
 					<CharacterModelCard key={i} />
 				))}

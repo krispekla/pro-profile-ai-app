@@ -1,8 +1,8 @@
 import {
-    DropdownMenu,
-    DropdownMenuContent,
-    DropdownMenuItem,
-    DropdownMenuTrigger,
+	DropdownMenu,
+	DropdownMenuContent,
+	DropdownMenuItem,
+	DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Avatar, AvatarImage } from './ui/avatar';
 
@@ -11,8 +11,8 @@ import { Button } from './ui/button';
 
 function CharacterModelCard() {
 	return (
-		<div className="flex flex-col shadow-xl bg-slate-200 w-52 h-full max-w-sm rounded-sm">
-			<Avatar className="mx-auto w-40 h-40 mt-3">
+		<div className="flex h-full w-52 max-w-sm flex-col rounded-sm bg-slate-200 shadow-xl">
+			<Avatar className="mx-auto mt-3 h-40 w-40">
 				<AvatarImage
 					src="https://github.com/shadcn.png"
 					alt="@shadcn"
