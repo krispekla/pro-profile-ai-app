@@ -4,14 +4,15 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Outlet, useNavigate } from 'react-router-dom';
 
 import { Button } from '@/components/ui/button';
-import useStore from '@/store/store';
+import { ThemeProvider } from './components/theme-provider';
 
 function App() {
 	const navigate = useNavigate();
-	const isDarkMode = useStore((state) => state.darkMode);
 	return (
-		<div className={`ppai_app ${isDarkMode ? 'dark' : 'light'}`}>
-			<div className="app_container">
+		<ThemeProvider
+			defaultTheme="light"
+			storageKey="ppai-theme">
+			<div className={`ppai_app `}>
 				<nav>
 					<h1
 						className="logo cursor-pointer"
@@ -43,7 +44,7 @@ function App() {
 					<Outlet />
 				</main>
 			</div>
-		</div>
+		</ThemeProvider>
 	);
 }
 

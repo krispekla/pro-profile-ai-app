@@ -33,13 +33,6 @@
 	}
 }
 
-.app_container {
-	@apply flex flex-col m-0;
-	@apply bg-white dark:bg-slate-900 dark:text-gray-50;
-	min-width: 100%;
-	min-height: 100%;
-}
-
 @keyframes gradient {
 	0% {
 		background-position: 0% 50%;
