@@ -10,7 +10,9 @@ function App() {
 	return (
 		<div className="ppai_app">
 			<nav>
-				<h1 className="logo">
+				<h1
+					className="logo cursor-pointer"
+					onClick={() => navigate('/')}>
 					ProProfile<span className="logo_ai">AI</span>
 				</h1>
 				<div className="flex flex-row ml-auto mr-5">
