@@ -11,15 +11,22 @@
 		"preview": "vite preview"
 	},
 	"dependencies": {
+		"@radix-ui/react-avatar": "^1.0.4",
+		"@radix-ui/react-slot": "^1.0.2",
 		"@supabase/auth-ui-react": "^0.4.6",
 		"@supabase/auth-ui-shared": "^0.1.8",
 		"@supabase/supabase-js": "^2.38.4",
+		"class-variance-authority": "^0.7.0",
+		"clsx": "^2.0.0",
+		"lucide-react": "^0.292.0",
 		"react": "^18.2.0",
 		"react-dom": "^18.2.0",
 		"react-router-dom": "^6.18.0",
+		"tailwind-merge": "^2.0.0",
 		"zustand": "^4.4.6"
 	},
 	"devDependencies": {
+		"@types/node": "^20.9.0",
 		"@types/react": "^18.2.15",
 		"@types/react-dom": "^18.2.7",
 		"@types/react-router": "^5.1.20",
@@ -33,6 +40,7 @@
 		"postcss": "^8.4.31",
 		"prettier": "3.0.3",
 		"tailwindcss": "^3.3.5",
+		"tailwindcss-animate": "^1.0.7",
 		"typescript": "^5.0.2",
 		"vite": "^4.4.5"
 	}
