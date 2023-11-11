@@ -4,7 +4,7 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Outlet, useNavigate } from 'react-router-dom';
 
 import { Button } from '@/components/ui/button';
-import { ThemeProvider } from './components/theme-provider';
+import { ThemeProvider } from './components/ThemeProvider';
 
 function App() {
 	const navigate = useNavigate();
@@ -12,7 +12,7 @@ function App() {
 		<ThemeProvider
 			defaultTheme="light"
 			storageKey="ppai-theme">
-			<div className={`ppai_app `}>
+			<div className="ppai_app">
 				<nav>
 					<h1
 						className="logo cursor-pointer"
@@ -40,7 +40,7 @@ function App() {
 						</Avatar>
 					</div>
 				</nav>
-				<main>
+				<main className="h-full w-full">
 					<Outlet />
 				</main>
 			</div>
