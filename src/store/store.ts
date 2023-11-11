@@ -1,8 +1,14 @@
+import { Session } from '@supabase/supabase-js';
 import { create } from 'zustand';
 
-const useStore = create((set) => ({
+interface UserState {
+	session: Session | null;
+	setSession: (session: Session) => void;
+}
+
+const useStore = create<UserState>((set) => ({
 	session: null,
-	setSession: (session: any) => set({ session }),
+	setSession: (session: Session) => set({ session }),
 }));
 
 export default useStore;

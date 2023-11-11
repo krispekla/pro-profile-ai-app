@@ -1,6 +1,7 @@
+import { Session, createClient } from '@supabase/supabase-js';
+
 import { Auth } from '@supabase/auth-ui-react';
 import { ThemeSupa } from '@supabase/auth-ui-shared';
-import { createClient } from '@supabase/supabase-js';
 import { useEffect } from 'react';
 import useStore from '../store/store';
 
@@ -15,13 +16,13 @@ export default function Login() {
 	useEffect(() => {
 		supabase.auth.getSession().then(({ data: { session } }) => {
 			console.log(session);
-			setSession(session);
+			setSession(session as Session);
 		});
 
 		const {
 			data: { subscription },
 		} = supabase.auth.onAuthStateChange((_event, session) => {
-			setSession(session);
+			setSession(session as Session);
 		});
 
 		return () => subscription.unsubscribe();
