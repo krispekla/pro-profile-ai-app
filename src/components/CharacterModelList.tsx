@@ -13,7 +13,7 @@ function CharacterModelList() {
 						space-x-4 rounded-xl border border-slate-600 bg-slate-50 p-4
 						pb-5">
 				{[1, 2, 3].map((_, i) => (
-					<CharacterModelCard key={i} />
+					<CharacterModelCard key={i} selected={i === 0} />
 				))}
 				<CharacterModelCardAdd />
 			</div>

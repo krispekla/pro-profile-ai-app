@@ -1,17 +1,24 @@
+import { Avatar, AvatarImage } from './ui/avatar';
 import {
 	DropdownMenu,
 	DropdownMenuContent,
 	DropdownMenuItem,
 	DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
-import { Avatar, AvatarImage } from './ui/avatar';
 
-import { PiCaretDownBold } from 'react-icons/pi';
 import { Button } from './ui/button';
+import { PiCaretDownBold } from 'react-icons/pi';
 
-function CharacterModelCard() {
+interface CharacterModelCardProps {
+	selected?: boolean;
+}
+
+function CharacterModelCard({ selected }: CharacterModelCardProps) {
 	return (
-		<div className="flex h-full w-52 max-w-sm flex-col rounded-sm bg-slate-200 shadow-xl">
+		<div
+			className={`flex h-full w-52 max-w-sm cursor-pointer flex-col rounded-sm 
+			hover:bg-yellow-100
+			 ${selected && 'rounded-lg border-2 border-yellow-300 bg-yellow-100'}`}>
 			<Avatar className="mx-auto mt-3 h-40 w-40">
 				<AvatarImage
 					src="https://github.com/shadcn.png"
