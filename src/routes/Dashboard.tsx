@@ -1,4 +1,5 @@
 import CharacterModelList from '@/components/CharacterModelList';
+import PackageList from '@/components/PackageList';
 
 export default function Dashboard() {
 	return (
@@ -8,6 +9,7 @@ export default function Dashboard() {
 				<div className="w-5 h-5 rounded-full bg-yellow-300 mr-2"></div>
 				<p>Selected Character</p>
 			</div>
+			<PackageList />
 		</div>
 	);
 }
