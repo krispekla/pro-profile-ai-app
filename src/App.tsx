@@ -11,6 +11,7 @@ import useStore from './store/store';
 
 function App() {
 	const navigate = useNavigate();
+	const session = useStore((state) => state.session);
 	const setSession = useStore((state) => state.setSession);
 	const supaClient = useStore((state) => state.supaClient);
 
@@ -26,6 +27,11 @@ function App() {
 
 		return () => subscription.unsubscribe();
 	}, []);
+
+	function logout() {
+		supaClient.auth.signOut();
+		navigate('/login');
+	}
 	return (
 		<ThemeProvider
 			defaultTheme="light"
@@ -38,24 +44,31 @@ function App() {
 						ProProfile<span className="logo_ai">AI</span>
 					</h1>
 					<div className="ml-auto flex flex-row">
-						<Button
-							variant={'secondary'}
-							onClick={() => navigate('/login')}>
-							Login
-						</Button>
-						<Button
-							className="ml-5"
-							variant={'secondary'}
-							onClick={() => navigate('/')}>
-							Logout
-						</Button>
-						<Avatar className="ml-3">
-							<AvatarImage
-								src="https://github.com/shadcn.png"
-								alt="@shadcn"
-							/>
-							<AvatarFallback>KP</AvatarFallback>
-						</Avatar>
+						{!session && (
+							<Button
+								className="mr-5"
+								variant={'secondary'}
+								onClick={() => navigate('/login')}>
+								Login
+							</Button>
+						)}
+						{session && (
+							<>
+								<Button
+									className="ml-5"
+									variant={'secondary'}
+									onClick={() => logout()}>
+									Logout
+								</Button>
+								<Avatar className="mx-3">
+									<AvatarImage
+										src="https://github.com/shadcn.png"
+										alt="@shadcn"
+									/>
+									<AvatarFallback>KP</AvatarFallback>
+								</Avatar>
+							</>
+						)}
 					</div>
 				</nav>
 				<main className="container h-full">

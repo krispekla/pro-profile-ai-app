@@ -1,46 +1,36 @@
-import { Session, createClient } from '@supabase/supabase-js';
-
-import { Auth } from '@supabase/auth-ui-react';
+import { SignIn } from '@supabase/auth-ui-react';
 import { ThemeSupa } from '@supabase/auth-ui-shared';
 import { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import useStore from '../store/store';
 
-const AUTH_API = import.meta.env.VITE_AUTH_API;
-const AUTH_KEY = import.meta.env.VITE_AUTH_KEY;
-const supabase = createClient(AUTH_API, AUTH_KEY);
-
 export default function Login() {
+	const supaClient = useStore((state) => state.supaClient);
 	const session = useStore((state) => state.session);
-	const setSession = useStore((state) => state.setSession);
-
+	const navigate = useNavigate();
 	useEffect(() => {
-		supabase.auth.getSession().then(({ data: { session } }) => {
-			console.log(session);
-			setSession(session as Session);
-		});
+		if (session) navigate('/');
+	}, [session]);
 
-		const {
-			data: { subscription },
-		} = supabase.auth.onAuthStateChange((_event, session) => {
-			setSession(session as Session);
-		});
-
-		return () => subscription.unsubscribe();
-	}, []);
-
-	if (!session) {
-		return (
-			<Auth
-				supabaseClient={supabase}
-				appearance={{ theme: ThemeSupa }}
+	return (
+		<div className="mx-auto mt-20 max-w-sm">
+			<SignIn
+				supabaseClient={supaClient}
+				providers={[]}
+				appearance={{
+					theme: ThemeSupa,
+					// TODO: https://supabase.com/docs/guides/auth/auth-helpers/auth-ui#override-themes
+					variables: {
+						default: {
+							colors: {
+								brand: 'hsl(0 100.0% 3.0%)',
+								brandAccent: 'hsl(0 100% 5.1%)',
+								brandButtonText: 'white',
+							},
+						},
+					},
+				}}
 			/>
-		);
-	} else {
-		return (
-			<div>
-				Logged in!
-				<button onClick={() => supabase.auth.signOut()}>Logout</button>
-			</div>
-		);
-	}
+		</div>
+	);
 }
