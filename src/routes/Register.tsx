@@ -6,6 +6,7 @@ export default function Register() {
 	const supaClient = useStore((state) => state.supaClient);
 	return (
 		<div className="mx-auto mt-20 max-w-sm">
+			<h2 className="mb-5 text-center text-3xl font-bold">Register for an account</h2>
 			<SignUp
 				supabaseClient={supaClient}
 				providers={[]}
