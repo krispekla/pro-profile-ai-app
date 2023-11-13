@@ -1,6 +1,6 @@
+import { Link } from 'react-router-dom';
 import { SignUp } from '@supabase/auth-ui-react';
 import { ThemeSupa } from '@supabase/auth-ui-shared';
-import { Link } from 'react-router-dom';
 import useStore from '../store/store';
 
 export default function Register() {
@@ -25,7 +25,7 @@ export default function Register() {
 				}}
 			/>
 			<div className="mt-3 flex items-center justify-between">
-				<Link to="/forget">Forget your password?</Link>
+				<Link className='underline' to="/forget">Forget your password?</Link>
 				<Link
 					to="/register"
 					className="underline">

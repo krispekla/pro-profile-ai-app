@@ -46,7 +46,7 @@ export default function Login() {
 				</div>
 				<Link
 					to="/forget"
-					className="mt-3">
+					className="mt-3 underline">
 					Forget your password?
 				</Link>
 			</div>
