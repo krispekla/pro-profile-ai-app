@@ -4,10 +4,28 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Outlet, useNavigate } from 'react-router-dom';
 
 import { Button } from '@/components/ui/button';
+import { Session } from '@supabase/supabase-js';
+import { useEffect } from 'react';
 import { ThemeProvider } from './components/ThemeProvider';
+import useStore from './store/store';
 
 function App() {
 	const navigate = useNavigate();
+	const setSession = useStore((state) => state.setSession);
+	const supaClient = useStore((state) => state.supaClient);
+
+	useEffect(() => {
+		supaClient.auth.getSession().then(({ data: { session } }) => {
+			setSession(session as Session);
+		});
+		const {
+			data: { subscription },
+		} = supaClient.auth.onAuthStateChange((_event, session) => {
+			setSession(session as Session);
+		});
+
+		return () => subscription.unsubscribe();
+	}, []);
 	return (
 		<ThemeProvider
 			defaultTheme="light"
@@ -40,7 +58,7 @@ function App() {
 						</Avatar>
 					</div>
 				</nav>
-				<main className="h-full w-full">
+				<main className="container h-full">
 					<Outlet />
 				</main>
 			</div>
