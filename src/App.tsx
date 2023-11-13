@@ -15,11 +15,11 @@ function App() {
 			<div className="ppai_app">
 				<nav>
 					<h1
-						className="logo cursor-pointer"
+						className="logo"
 						onClick={() => navigate('/')}>
 						ProProfile<span className="logo_ai">AI</span>
 					</h1>
-					<div className="ml-auto mr-5 flex flex-row">
+					<div className="ml-auto flex flex-row">
 						<Button
 							variant={'secondary'}
 							onClick={() => navigate('/login')}>

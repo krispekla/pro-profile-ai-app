@@ -12,7 +12,7 @@
 			@apply h-full;
 			@apply font-extrabold;
 			@apply text-4xl;
-			@apply ml-6;
+			@apply ml-6 cursor-pointer;
 			/* TODO: Clean up and set up a proper logo */
 			/* @apply cursor-pointer;
 			color: #00ffff;
