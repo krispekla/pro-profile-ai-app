@@ -1,5 +1,6 @@
 import { SignIn } from '@supabase/auth-ui-react';
 import { ThemeSupa } from '@supabase/auth-ui-shared';
+import { Link } from 'react-router-dom';
 import useStore from '../store/store';
 
 export default function Login() {
@@ -24,6 +25,13 @@ export default function Login() {
 					},
 				}}
 			/>
+			<div className="mt-5 flex flex-col justify-between items-center">
+				<div className="flex">
+					<span className="mr-1">Don't have an account?</span>
+					<Link to="/register" className='underline'>Sign Up Now</Link>
+				</div>
+				<Link to="/forget" className='mt-3'>Forget your password?</Link>
+			</div>
 		</div>
 	);
 }

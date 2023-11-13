@@ -1,12 +1,13 @@
 import { SignUp } from '@supabase/auth-ui-react';
 import { ThemeSupa } from '@supabase/auth-ui-shared';
+import { Link } from 'react-router-dom';
 import useStore from '../store/store';
 
 export default function Register() {
 	const supaClient = useStore((state) => state.supaClient);
 	return (
 		<div className="mx-auto mt-20 max-w-sm">
-			<h2 className="mb-5 text-center text-3xl font-bold">Register for an account</h2>
+			<h2 className="mb-5 text-center text-3xl font-bold">Register account</h2>
 			<SignUp
 				supabaseClient={supaClient}
 				providers={[]}
@@ -23,6 +24,14 @@ export default function Register() {
 					},
 				}}
 			/>
+			<div className="mt-3 flex items-center justify-between">
+				<Link to="/forget">Forget your password?</Link>
+				<Link
+					to="/register"
+					className="underline">
+					Sign In
+				</Link>
+			</div>
 		</div>
 	);
 }
