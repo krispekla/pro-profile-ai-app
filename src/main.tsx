@@ -2,13 +2,14 @@ import './index.css';
 
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 
+import App from './App';
+import Dashboard from './routes/Dashboard';
+import ErrorPage from './routes/NotFound';
+import Login from './routes/Login';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.tsx';
-import Dashboard from './routes/Dashboard';
-import Login from './routes/Login';
-import ErrorPage from './routes/NotFound';
-import Signup from './routes/Signup';
+import Register from './routes/Register';
+import Reset from './routes/Reset';
 
 const router = createBrowserRouter([
 	{
@@ -28,8 +29,12 @@ const router = createBrowserRouter([
 						element: <Login />,
 					},
 					{
-						path: '/signup',
-						element: <Signup />,
+						path: '/register',
+						element: <Register />,
+					},
+					{
+						path: '/reset',
+						element: <Reset />,
 					},
 				],
 			},
