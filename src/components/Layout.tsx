@@ -43,12 +43,20 @@ export default function Layout() {
 					</h1>
 					<div className="ml-auto flex flex-row">
 						{!session && (
-							<Button
-								className="mr-5"
-								variant={'secondary'}
-								onClick={() => navigate('/login')}>
-								Login
-							</Button>
+							<>
+								<Button
+									className="mr-5"
+									variant={'secondary'}
+									onClick={() => navigate('/login')}>
+									Login
+								</Button>
+								<Button
+									className="mr-5"
+									variant={'secondary'}
+									onClick={() => navigate('/register')}>
+									Register
+								</Button>
+							</>
 						)}
 						{session && (
 							<>
