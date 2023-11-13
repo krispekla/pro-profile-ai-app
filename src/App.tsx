@@ -4,6 +4,7 @@ import { RouterProvider, createBrowserRouter, redirect } from 'react-router-dom'
 
 import Layout from './components/Layout';
 import Dashboard from './routes/Dashboard';
+import ForgetPassword from './routes/ForgetPassword';
 import Login from './routes/Login';
 import ErrorPage from './routes/NotFound';
 import Register from './routes/Register';
@@ -12,6 +13,9 @@ import useStore from './store/store';
 
 function App() {
 	const session = useStore((state) => state.session);
+	function onlyAuthorized() {
+		return !session ? redirect('/login') : null;
+	}
 	const router = createBrowserRouter([
 		{
 			path: '/',
@@ -24,23 +28,25 @@ function App() {
 						{
 							path: '/',
 							element: <Dashboard />,
-							loader: () => {
-								return !session ? redirect('/login') : null;
-							},
-						},
-						{
-							path: '/login',
-							element: <Login />,
-						},
-						{
-							path: '/register',
-							element: <Register />,
-						},
-						{
-							path: '/reset',
-							element: <Reset />,
 						},
 					],
+					loader: onlyAuthorized,
+				},
+				{
+					path: '/login',
+					element: <Login />,
+				},
+				{
+					path: '/register',
+					element: <Register />,
+				},
+				{
+					path: '/reset',
+					element: <Reset />,
+				},
+				{
+					path: '/forget',
+					element: <ForgetPassword />,
 				},
 			],
 		},
