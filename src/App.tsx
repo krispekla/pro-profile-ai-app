@@ -7,6 +7,7 @@ import Dashboard from './routes/Dashboard';
 import ForgetPassword from './routes/ForgetPassword';
 import Login from './routes/Login';
 import ErrorPage from './routes/NotFound';
+import PackageSingle from './routes/PackageSingle';
 import Register from './routes/Register';
 import Reset from './routes/Reset';
 import useStore from './store/store';
@@ -28,6 +29,10 @@ function App() {
 						{
 							path: '/',
 							element: <Dashboard />,
+						},
+						{
+							path: '/package/:id',
+							element: <PackageSingle />,
 						},
 					],
 					loader: onlyAuthorized,
