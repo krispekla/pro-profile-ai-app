@@ -1,6 +1,6 @@
 import './App.css';
 
-import { RouterProvider, createBrowserRouter, redirect } from 'react-router-dom';
+import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import Layout from './components/Layout';
 import Dashboard from './routes/Dashboard';
@@ -12,11 +12,12 @@ import Register from './routes/Register';
 import Reset from './routes/Reset';
 import useStore from './store/store';
 
-function App() {
+function ProtectedRoute() {
 	const session = useStore((state) => state.session);
-	function onlyAuthorized() {
-		return !session ? redirect('/login') : null;
-	}
+	return session ? <Outlet /> : <Login />;
+}
+
+function App() {
 	const router = createBrowserRouter([
 		{
 			path: '/',
@@ -24,6 +25,7 @@ function App() {
 			errorElement: <ErrorPage />,
 			children: [
 				{
+					element: <ProtectedRoute />,
 					errorElement: <ErrorPage />,
 					children: [
 						{
@@ -35,7 +37,6 @@ function App() {
 							element: <PackageSingle />,
 						},
 					],
-					loader: onlyAuthorized,
 				},
 				{
 					path: '/login',
