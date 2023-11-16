@@ -3,7 +3,7 @@ import { useNavigate } from "react-router";
 export default function PackageCard() {
   const navigate = useNavigate();
 	return (
-		<div className="relative h-52 w-72 cursor-pointer shadow-xl hover:-translate-y-1" onClick={() => navigate("/package/5")}>
+		<div className="relative h-52 w-72 cursor-pointer shadow-lg shadow-primary hover:-translate-y-1" onClick={() => navigate("/package/5")}>
 			<img
 				className="absolute left-0 top-0 h-full w-full object-cover"
 				src="https://picsum.photos/536/354"

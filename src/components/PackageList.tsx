@@ -9,11 +9,13 @@ function PackageList() {
 						 rounded-xl border border-secondary-foreground bg-secondary px-8 py-6"
 				style={{ minHeight: '40rem' }}>
 				<h3 className="text-2xl font-bold">Bought</h3>
-				<div className="mt-3 flex h-52 flex-col">
+				<div className="mt-3 flex h-52 flex-row"></div>
+				<h3 className="mt-3 text-2xl font-bold">Available</h3>
+				<div className="mt-3 flex flex-row space-x-5 h-52">
+					<PackageCard />
+					<PackageCard />
 					<PackageCard />
 				</div>
-				<h3 className="mt-3 text-2xl font-bold">Available</h3>
-				<div className="mt-3 flex h-52 flex-col"></div>
 			</div>
 		</section>
 	);
