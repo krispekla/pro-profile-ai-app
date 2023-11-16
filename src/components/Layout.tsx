@@ -6,6 +6,7 @@ import { Session } from '@supabase/supabase-js';
 import { useEffect } from 'react';
 import { ThemeProvider } from '../components/ThemeProvider';
 import useStore from '../store/store';
+import Footer from './Footer';
 
 export default function Layout() {
 	const navigate = useNavigate();
@@ -80,6 +81,7 @@ export default function Layout() {
 				<main className="container h-full">
 					<Outlet />
 				</main>
+				<Footer />
 			</div>
 		</ThemeProvider>
 	);
