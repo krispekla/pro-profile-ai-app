@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router';
-import { Button } from './ui/button';
 
 export default function GeneratedCard() {
 	const navigate = useNavigate();
@@ -14,11 +13,11 @@ export default function GeneratedCard() {
 					alt="Package Image"
 				/>
 				<div className="absolute bottom-0 left-0 right-0 top-0 flex h-full w-full items-center justify-center shadow-2xl">
-					<div className="mb-12 flex flex-col">
+					<div className="flex flex-col">
 						<span className="text-2xl font-bold text-white">Linkedin package</span>
-						<span className="mt-auto text-xl text-white">John Doe</span>
+						<span className="mt-3 text-xl text-white">John Doe</span>
 					</div>
-					<Button
+					{/* <Button
 						className="absolute bottom-0 left-0 right-0 mx-auto mb-2 w-1/2"
 						variant="secondary"
 						onClick={(e) => {
@@ -26,7 +25,7 @@ export default function GeneratedCard() {
 							navigate('/generated/1');
 						}}>
 						Open
-					</Button>
+					</Button> */}
 				</div>
 			</div>
 		</>
