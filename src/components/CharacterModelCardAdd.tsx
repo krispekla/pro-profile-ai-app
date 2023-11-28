@@ -9,9 +9,10 @@ function CharacterModelCardAdd() {
 			onClick={() => navigate('/character/new')}>
 			<div
 				className="m-auto mt-3 flex h-40 w-40 rounded-full 
-				border-2 border-dashed border-secondary-foreground hover:bg-secondary">
+				border-2 border-dashed border-secondary-foreground hover:bg-gray-200">
 				<AiOutlinePlus className="m-auto h-20 w-20 text-secondary-foreground" />
 			</div>
+			<span className="m-auto mt-3 text-xl text-secondary-foreground">Add Character</span>
 		</div>
 	);
 }
