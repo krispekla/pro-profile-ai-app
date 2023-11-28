@@ -6,6 +6,7 @@ import Layout from './components/Layout';
 import CharacterNew from './routes/CharacterNew';
 import Dashboard from './routes/Dashboard';
 import ForgetPassword from './routes/ForgetPassword';
+import GeneratedPackage from './routes/GeneratedPackage';
 import Login from './routes/Login';
 import ErrorPage from './routes/NotFound';
 import PackageSingle from './routes/PackageSingle';
@@ -36,6 +37,10 @@ function App() {
 						{
 							path: '/package/:id',
 							element: <PackageSingle />,
+						},
+						{
+							path: '/generate/:id',
+							element: <GeneratedPackage />,
 						},
 						{
 							path: '/character/new',

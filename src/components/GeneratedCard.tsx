@@ -7,23 +7,23 @@ export default function GeneratedCard() {
 		<>
 			<div
 				className="relative h-52 w-72 cursor-pointer shadow-lg shadow-primary hover:-translate-y-1"
-				onClick={() => navigate('/package/5')}>
+				onClick={() => navigate('/generate/1')}>
 				<img
 					className="absolute left-0 top-0 h-full w-full object-cover"
 					src="https://fastly.picsum.photos/id/982/536/354.jpg?hmac=xXo1bhVRPwA6K0ttkJqSEghDCDNd7xWKfKpE5kqXlQo"
 					alt="Package Image"
 				/>
 				<div className="absolute bottom-0 left-0 right-0 top-0 flex h-full w-full items-center justify-center shadow-2xl">
-					<div className="flex flex-col mb-12">
+					<div className="mb-12 flex flex-col">
 						<span className="text-2xl font-bold text-white">Linkedin package</span>
-						<span className="text-xl mt-auto text-white">John Doe</span>
+						<span className="mt-auto text-xl text-white">John Doe</span>
 					</div>
 					<Button
 						className="absolute bottom-0 left-0 right-0 mx-auto mb-2 w-1/2"
 						variant="secondary"
 						onClick={(e) => {
 							e.stopPropagation();
-							navigate('/package/5');
+							navigate('/generate/1');
 						}}>
 						Open
 					</Button>
