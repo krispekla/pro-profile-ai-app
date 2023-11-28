@@ -39,7 +39,7 @@ function App() {
 							element: <PackageSingle />,
 						},
 						{
-							path: '/generate/:id',
+							path: '/generated/:id',
 							element: <GeneratedPackage />,
 						},
 						{
