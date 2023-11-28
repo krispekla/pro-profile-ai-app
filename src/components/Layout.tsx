@@ -47,13 +47,13 @@ export default function Layout() {
 							<>
 								<Button
 									className="mr-5"
-									variant={'secondary'}
+									variant={'default'}
 									onClick={() => navigate('/login')}>
 									Login
 								</Button>
 								<Button
 									className="mr-5"
-									variant={'secondary'}
+									variant={'default'}
 									onClick={() => navigate('/register')}>
 									Register
 								</Button>
@@ -63,7 +63,7 @@ export default function Layout() {
 							<>
 								<Button
 									className="ml-5"
-									variant={'secondary'}
+									variant={'default'}
 									onClick={() => logout()}>
 									Logout
 								</Button>
