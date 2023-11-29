@@ -9,7 +9,7 @@ import ForgetPassword from './routes/ForgetPassword';
 import GeneratedPackage from './routes/GeneratedPackage';
 import Login from './routes/Login';
 import ErrorPage from './routes/NotFound';
-import PackageSingle from './routes/PackageSingle';
+import PackageOverview from './routes/PackageOverview';
 import Register from './routes/Register';
 import Reset from './routes/Reset';
 import useStore from './store/store';
@@ -36,7 +36,7 @@ function App() {
 						},
 						{
 							path: '/package/:id',
-							element: <PackageSingle />,
+							element: <PackageOverview />,
 						},
 						{
 							path: '/generated/:id',
