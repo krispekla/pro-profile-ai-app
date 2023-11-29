@@ -5,16 +5,32 @@ import {
 	SelectTrigger,
 	SelectValue,
 } from '@/components/ui/select';
+import { useEffect, useState } from 'react';
+import { FaArrowLeft, FaPlus } from 'react-icons/fa';
 
 import MessageWithLoader from '@/components/MessageWithLoader';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { useState } from 'react';
-import { FaPlus } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 export default function CharacterNew() {
 	const [creating, setCreating] = useState(false);
+	const [createdSuccess, setCreatedSuccess] = useState(false);
+	const navigate = useNavigate();
+	useEffect(() => {
+		if (creating) {
+			createCharacter();
+		}
+	}, [creating]);
+
+	function createCharacter() {
+		setTimeout(() => {
+			setCreating(false);
+			setCreatedSuccess(true);
+		}, 2000);
+	}
+
 	return (
 		<div className="mt-5">
 			<h1 className="text-3xl font-light text-primary">
@@ -153,11 +169,22 @@ export default function CharacterNew() {
 			</div>
 			<div className="mt-7 flex flex-row items-center justify-end space-x-2">
 				{creating && <MessageWithLoader message="Character is being created" />}
-				<Button
-					disabled={creating}
-					onClick={() => setCreating(true)}>
-					Create character
-				</Button>
+				{createdSuccess && (
+					<>
+						<h3 className="mr-4 text-xl text-green-500 font-semibold">Character created successfully!</h3>
+						<Button onClick={() => navigate('/')}>
+							<FaArrowLeft />
+							<span className='ml-3'>Go back to dashboard</span>
+						</Button>
+					</>
+				)}
+				{!createdSuccess && (
+					<Button
+						disabled={creating}
+						onClick={() => setCreating(true)}>
+						Create character
+					</Button>
+				)}
 			</div>
 		</div>
 	);
