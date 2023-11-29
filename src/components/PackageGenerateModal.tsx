@@ -1,6 +1,7 @@
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 
 import { useState } from 'react';
+import MessageWithLoader from './MessageWithLoader';
 import { Button } from './ui/button';
 
 type Characters = {
@@ -82,17 +83,13 @@ export default function PackageGenerateModal(props: PackageGenerateModalProps) {
 					)}
 					{generate && (
 						<div>
-							<div className="my-10 flex items-center justify-center">
-								<div className="mr-3">Generating</div>
-								<div className="mx-1 h-3 w-3 animate-bounce rounded-full bg-primary"></div>
-								<div className="mx-1 h-3 w-3 animate-bounce rounded-full bg-primary delay-150"></div>
-								<div className="mx-1 h-3 w-3 animate-bounce rounded-full bg-primary delay-300"></div>
-							</div>
-							<div className="mt-4 text-center">
-								Images are generated for selected characters. <br />
-								You will be notified by email when images are ready. <br />
-								You can close this modal now.
-							</div>
+							<MessageWithLoader message="Generating">
+								<div className="mt-4 text-center">
+									Images are generated for selected characters. <br />
+									You will be notified by email when images are ready. <br />
+									You can close this modal now.
+								</div>
+							</MessageWithLoader>
 						</div>
 					)}
 				</DialogHeader>
