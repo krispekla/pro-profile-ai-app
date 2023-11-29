@@ -9,6 +9,7 @@ import ForgetPassword from './routes/ForgetPassword';
 import GeneratedPackage from './routes/GeneratedPackage';
 import Login from './routes/Login';
 import ErrorPage from './routes/NotFound';
+import PackageBuy from './routes/PackageBuy';
 import PackageOverview from './routes/PackageOverview';
 import Register from './routes/Register';
 import Reset from './routes/Reset';
@@ -37,6 +38,10 @@ function App() {
 						{
 							path: '/package/:id',
 							element: <PackageOverview />,
+						},
+						{
+							path: '/package/:id/buy',
+							element: <PackageBuy />,
 						},
 						{
 							path: '/generated/:id',

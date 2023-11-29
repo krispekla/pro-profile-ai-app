@@ -1,16 +1,19 @@
+import { useNavigate, useParams } from 'react-router-dom';
+
 import { Button } from '@/components/ui/button';
 import { useState } from 'react';
-import { useParams } from 'react-router-dom';
 
 export default function PackageOverview() {
 	const { id } = useParams<{ id: string }>();
 	const [quantity, setQuantity] = useState(1);
+	const navigate = useNavigate();
 
 	const handleQuantityChange = (event: React.ChangeEvent<HTMLInputElement>) => {
 		setQuantity(Number(event.target.value));
 	};
 
 	const handleBuyButtonClick = () => {
+		navigate(`/package/${id}/buy?quantity=${quantity}`);
 		// Add your logic for handling the buy button click here
 		// For example, you can navigate to a checkout page or perform an API call
 	};
@@ -57,11 +60,11 @@ export default function PackageOverview() {
 					onChange={handleQuantityChange}
 					className="w-16 rounded border border-gray-300 px-2 py-1"
 				/>
-			<Button
-				onClick={handleBuyButtonClick}
-				className="px-8 py-2 ml-8">
-				Buy
-			</Button>
+				<Button
+					onClick={handleBuyButtonClick}
+					className="ml-8 px-8 py-2">
+					Buy
+				</Button>
 			</div>
 		</div>
 	);
