@@ -1,17 +1,20 @@
 import {
-    Select,
-    SelectContent,
-    SelectItem,
-    SelectTrigger,
-    SelectValue,
+	Select,
+	SelectContent,
+	SelectItem,
+	SelectTrigger,
+	SelectValue,
 } from '@/components/ui/select';
 
+import MessageWithLoader from '@/components/MessageWithLoader';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
 
 export default function CharacterNew() {
+	const [creating, setCreating] = useState(false);
 	return (
 		<div className="mt-5">
 			<h1 className="text-3xl font-light text-primary">
@@ -139,7 +142,7 @@ export default function CharacterNew() {
 					return (
 						<div
 							key={i}
-							className="h-[240px] w-[240px] rounded-xl border-2 border-dashed border-primary bg-secondary hover:bg-slate-200 cursor-pointer">
+							className="h-[240px] w-[240px] cursor-pointer rounded-xl border-2 border-dashed border-primary bg-secondary hover:bg-slate-200">
 							<div className="flex h-full flex-col items-center justify-center">
 								<FaPlus className="h-12 w-12 text-primary" />
 								<p className="text-primary">Add image</p>
@@ -148,8 +151,13 @@ export default function CharacterNew() {
 					);
 				})}
 			</div>
-			<div className="mt-7 flex flex-row justify-end">
-				<Button>Create character</Button>
+			<div className="mt-7 flex flex-row items-center justify-end space-x-2">
+				{creating && <MessageWithLoader message="Character is being created" />}
+				<Button
+					disabled={creating}
+					onClick={() => setCreating(true)}>
+					Create character
+				</Button>
 			</div>
 		</div>
 	);
