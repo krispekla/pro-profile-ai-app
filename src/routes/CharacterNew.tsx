@@ -146,35 +146,44 @@ export default function CharacterNew() {
 					</Select>
 				</div>
 			</div>
-			<div className="mt-7 flex min-h-[850px] flex-row flex-wrap justify-around rounded-xl bg-secondary p-4 pb-5">
-				{[...Array(8)].map((_, i) => (
-					<img
-						key={i}
-						className="h-[240px] w-[240px] rounded-xl"
-						src="https://images.generated.photos/uDYtLaITxABClgf3JxK1Fb2T2DZXDUrtV1yGJKRkB6k/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTE3ODI1LmpwZw.jpg"
-					/>
-				))}
-				{[...Array(7)].map((_, i) => {
-					return (
-						<div
+			<div className="mt-7 flex min-h-[850px] flex-col rounded-xl bg-secondary p-4 pb-5">
+				<p className="mb-4">
+					In order to get best results please use high quality images with good lighting. It is
+					recommended to use images with a single person on them and also to use images with a
+					neutral background.
+				</p>
+				<div className="flex flex-row flex-wrap justify-around gap-2">
+					{[...Array(8)].map((_, i) => (
+						<img
 							key={i}
-							className="h-[240px] w-[240px] cursor-pointer rounded-xl border-2 border-dashed border-primary bg-secondary hover:bg-slate-200">
-							<div className="flex h-full flex-col items-center justify-center">
-								<FaPlus className="h-12 w-12 text-primary" />
-								<p className="text-primary">Add image</p>
+							className="h-[240px] w-[240px] rounded-xl"
+							src="https://images.generated.photos/uDYtLaITxABClgf3JxK1Fb2T2DZXDUrtV1yGJKRkB6k/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTE3ODI1LmpwZw.jpg"
+						/>
+					))}
+					{[...Array(7)].map((_, i) => {
+						return (
+							<div
+								key={i}
+								className="h-[240px] w-[240px] cursor-pointer rounded-xl border-2 border-dashed border-primary bg-secondary hover:bg-slate-200">
+								<div className="flex h-full flex-col items-center justify-center">
+									<FaPlus className="h-12 w-12 text-primary" />
+									<p className="text-primary">Add image</p>
+								</div>
 							</div>
-						</div>
-					);
-				})}
+						);
+					})}
+				</div>
 			</div>
 			<div className="mt-7 flex flex-row items-center justify-end space-x-2">
 				{creating && <MessageWithLoader message="Character is being created" />}
 				{createdSuccess && (
 					<>
-						<h3 className="mr-4 text-xl text-green-500 font-semibold">Character created successfully!</h3>
+						<h3 className="mr-4 text-xl font-semibold text-green-500">
+							Character created successfully!
+						</h3>
 						<Button onClick={() => navigate('/')}>
 							<FaArrowLeft />
-							<span className='ml-3'>Go back to dashboard</span>
+							<span className="ml-3">Go back to dashboard</span>
 						</Button>
 					</>
 				)}
