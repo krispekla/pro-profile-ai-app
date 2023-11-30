@@ -3,6 +3,7 @@ import './App.css';
 import { Outlet, RouterProvider, createBrowserRouter } from 'react-router-dom';
 
 import Layout from './components/Layout';
+import CharacterEdit from './routes/CharacterEdit';
 import CharacterNew from './routes/CharacterNew';
 import Dashboard from './routes/Dashboard';
 import ForgetPassword from './routes/ForgetPassword';
@@ -50,6 +51,10 @@ function App() {
 						{
 							path: '/character/new',
 							element: <CharacterNew />,
+						},
+						{
+							path: '/character/edit/:id',
+							element: <CharacterEdit />,
 						},
 					],
 				},
