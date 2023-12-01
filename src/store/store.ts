@@ -1,3 +1,4 @@
+import { Stripe, loadStripe } from '@stripe/stripe-js';
 import { Session, SupabaseClient, createClient } from '@supabase/supabase-js';
 
 import { mountStoreDevtool } from 'simple-zustand-devtools';
@@ -9,6 +10,7 @@ const AUTH_KEY = import.meta.env.VITE_AUTH_KEY;
 type State = {
 	session: Session | null;
 	supaClient: SupabaseClient;
+	stripePromise: Promise<Stripe | null>;
 };
 type Actions = {
 	setSession: (session: Session) => void;
@@ -18,6 +20,7 @@ type Actions = {
 const useStore = create<State & Actions>((set) => ({
 	session: null,
 	supaClient: createClient(AUTH_API, AUTH_KEY),
+	stripePromise: loadStripe(import.meta.env.VITE_STRIPE_PUBLISHABLE_KEY),
 	setSession: (session: Session) => set({ session }),
 	setSupabaseClient: () => {
 		const supabase = createClient(AUTH_API, AUTH_KEY);
