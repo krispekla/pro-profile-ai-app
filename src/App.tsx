@@ -11,6 +11,7 @@ import GeneratedPackage from './routes/GeneratedPackage';
 import Login from './routes/Login';
 import ErrorPage from './routes/NotFound';
 import PackageBuy from './routes/PackageBuy';
+import PackageBuyReturn from './routes/PackageBuyReturn';
 import PackageOverview from './routes/PackageOverview';
 import Register from './routes/Register';
 import Reset from './routes/Reset';
@@ -43,6 +44,10 @@ function App() {
 						{
 							path: '/package/:id/buy',
 							element: <PackageBuy />,
+						},
+						{
+							path: '/package/buy/return',
+							element: <PackageBuyReturn />,
 						},
 						{
 							path: '/generated/:id',
