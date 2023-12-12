@@ -2,6 +2,10 @@ import { FaPlus } from 'react-icons/fa';
 import { Button } from './ui/button';
 
 export default function CharacterUploader() {
+	function addImages(e: React.ChangeEvent<HTMLInputElement>) {
+		console.log(e.target.files);
+	}
+
 	return (
 		<div className="flex flex-row flex-wrap justify-around gap-2">
 			{[...Array(6)].map((_, i) => {
@@ -26,11 +30,11 @@ export default function CharacterUploader() {
 			})}
 			<div className="relative h-[240px] w-[240px] cursor-pointer rounded-xl border-2 border-dashed border-primary bg-secondary hover:bg-slate-200">
 				<input
-					className="absolute bottom-0 left-0 right-0 top-0 opacity-0 cursor-pointer"
 					className="absolute bottom-0 left-0 right-0 top-0 cursor-pointer opacity-0"
 					type="file"
 					accept="image/jpeg, image/jpg, image/png"
 					multiple
+					onChange={(e) => addImages(e)}
 				/>
 				<div className="flex h-full flex-col items-center justify-center">
 					<FaPlus className="h-12 w-12 text-primary" />
