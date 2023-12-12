@@ -4,13 +4,6 @@ import { Button } from './ui/button';
 export default function CharacterUploader() {
 	return (
 		<div className="flex flex-row flex-wrap justify-around gap-2">
-			{/* {[...Array(8)].map((_, i) => (
-				<img
-					key={i}
-					className="h-[240px] w-[240px] rounded-xl"
-					src="https://images.generated.photos/uDYtLaITxABClgf3JxK1Fb2T2DZXDUrtV1yGJKRkB6k/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTE3ODI1LmpwZw.jpg"
-				/>
-			))} */}
 			{[...Array(6)].map((_, i) => {
 				return (
 					<div
