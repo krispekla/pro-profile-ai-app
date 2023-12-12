@@ -27,7 +27,9 @@ export default function CharacterUploader() {
 			<div className="relative h-[240px] w-[240px] cursor-pointer rounded-xl border-2 border-dashed border-primary bg-secondary hover:bg-slate-200">
 				<input
 					className="absolute bottom-0 left-0 right-0 top-0 opacity-0 cursor-pointer"
+					className="absolute bottom-0 left-0 right-0 top-0 cursor-pointer opacity-0"
 					type="file"
+					accept="image/jpeg, image/jpg, image/png"
 					multiple
 				/>
 				<div className="flex h-full flex-col items-center justify-center">
@@ -39,7 +41,7 @@ export default function CharacterUploader() {
 				return (
 					<div
 						key={i}
-						className="h-[240px] w-[240px] rounded-xl border-2 border-dashed border-primary bg-secondar">
+						className="bg-secondar h-[240px] w-[240px] rounded-xl border-2 border-dashed border-primary">
 						<div className="flex h-full flex-col items-center justify-center"></div>
 					</div>
 				);
