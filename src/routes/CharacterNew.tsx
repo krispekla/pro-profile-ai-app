@@ -6,12 +6,13 @@ import {
 	SelectValue,
 } from '@/components/ui/select';
 import { useEffect, useState } from 'react';
-import { FaArrowLeft, FaPlus } from 'react-icons/fa';
 
+import CharacterUploader from '@/components/CharacterUploader';
 import MessageWithLoader from '@/components/MessageWithLoader';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { FaArrowLeft } from 'react-icons/fa';
 import { useNavigate } from 'react-router-dom';
 
 export default function CharacterNew() {
@@ -152,27 +153,7 @@ export default function CharacterNew() {
 					recommended to use images with a single person on them and also to use images with a
 					neutral background.
 				</p>
-				<div className="flex flex-row flex-wrap justify-around gap-2">
-					{[...Array(8)].map((_, i) => (
-						<img
-							key={i}
-							className="h-[240px] w-[240px] rounded-xl"
-							src="https://images.generated.photos/uDYtLaITxABClgf3JxK1Fb2T2DZXDUrtV1yGJKRkB6k/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTE3ODI1LmpwZw.jpg"
-						/>
-					))}
-					{[...Array(7)].map((_, i) => {
-						return (
-							<div
-								key={i}
-								className="h-[240px] w-[240px] cursor-pointer rounded-xl border-2 border-dashed border-primary bg-secondary hover:bg-slate-200">
-								<div className="flex h-full flex-col items-center justify-center">
-									<FaPlus className="h-12 w-12 text-primary" />
-									<p className="text-primary">Add image</p>
-								</div>
-							</div>
-						);
-					})}
-				</div>
+				<CharacterUploader />
 			</div>
 			<div className="mt-7 flex flex-row items-center justify-end space-x-2">
 				{creating && <MessageWithLoader message="Character is being created" />}
