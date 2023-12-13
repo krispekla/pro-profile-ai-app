@@ -26,6 +26,9 @@ export default function CharacterNew() {
 	}, [creating]);
 
 	function createCharacter() {
+		// Fetch the presigned URL from backend and provide some metadata
+		// Use url to automatically upload the file to S3 of each image associated with certain metadata
+		// Upon succesfull completition of all uploads, send to backend all file information along with charachter description information
 		setTimeout(() => {
 			setCreating(false);
 			setCreatedSuccess(true);
