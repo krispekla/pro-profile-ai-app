@@ -1,14 +1,17 @@
+import { useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
 import { Button } from './ui/button';
 
 export default function CharacterUploader() {
+	const [files, setFiles] = useState<FileList | null>(null);
 	function addImages(e: React.ChangeEvent<HTMLInputElement>) {
 		console.log(e.target.files);
+		setFiles(e.target.files);
 	}
 
 	return (
 		<div className="flex flex-row flex-wrap justify-around gap-2">
-			{[...Array(6)].map((_, i) => {
+			{files && Array.from(files).map((_, i) => {
 				return (
 					<div
 						key={i}
@@ -17,7 +20,7 @@ export default function CharacterUploader() {
 							<img
 								key={i}
 								className="h-[240px] w-[240px] rounded-xl"
-								src="https://images.generated.photos/uDYtLaITxABClgf3JxK1Fb2T2DZXDUrtV1yGJKRkB6k/rs:fit:256:256/czM6Ly9pY29uczgu/Z3Bob3Rvcy1wcm9k/LnBob3Rvcy92M18w/OTE3ODI1LmpwZw.jpg"
+								src={URL.createObjectURL(files[i])}
 							/>
 							<Button
 								className="absolute bottom-1 right-1 p-2 text-primary shadow-sm"
