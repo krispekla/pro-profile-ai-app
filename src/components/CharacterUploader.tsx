@@ -3,10 +3,15 @@ import { FaPlus } from 'react-icons/fa';
 import { Button } from './ui/button';
 
 export default function CharacterUploader() {
-	const [files, setFiles] = useState<FileList | null>(null);
-	function addImages(e: React.ChangeEvent<HTMLInputElement>) {
-		console.log(e.target.files);
-		setFiles(e.target.files);
+	const [files, setFiles] = useState<File[] | null>(null);
+
+	const addImages = (event: React.ChangeEvent<HTMLInputElement>) => {
+		if (event.target.files) {
+			const selectedFiles = Array.from(event.target.files);
+			setFiles((prevFiles) => (prevFiles ? [...prevFiles, ...selectedFiles] : selectedFiles));
+		}
+	};
+
 	}
 
 	return (
