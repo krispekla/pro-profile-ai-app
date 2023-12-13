@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { FaPlus } from 'react-icons/fa';
+import axios from '../lib/axios';
 import { Button } from './ui/button';
 
 export default function CharacterUploader() {
@@ -7,6 +8,8 @@ export default function CharacterUploader() {
 
 	const addImages = (event: React.ChangeEvent<HTMLInputElement>) => {
 		if (event.target.files) {
+			// Fetch the presigned URL
+			// Use url to automatically upload the file to S3
 			const selectedFiles = Array.from(event.target.files);
 			setFiles((prevFiles) => (prevFiles ? [...prevFiles, ...selectedFiles] : selectedFiles));
 		}
@@ -16,6 +19,22 @@ export default function CharacterUploader() {
 		const newFiles = Array.from(files!);
 		newFiles.splice(i, 1);
 		setFiles(newFiles.length > 0 ? newFiles : null);
+	}
+
+	async function uploadImage(image: File) {
+		const url = 'https://ppai-local.4e16439b8486c91482dd1b67dd992643.r2.cloudflarestorage.com/kris555.jpg?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=f3b17af2e07b9687026ebafd23019a8e%2F20231213%2Fauto%2Fs3%2Faws4_request&X-Amz-Date=20231213T211937Z&X-Amz-Expires=900&X-Amz-SignedHeaders=host&x-id=PutObject&X-Amz-Signature=75a230dca659841fff4d9bea5f54139e3008a8d42e5dd3ca9d84d1728f6ad341';
+
+		const response = await axios.put(url, image, {
+			headers: {
+				'Content-Type': image.type,
+			},
+		});
+
+		if (response.status !== 200) {
+			throw new Error(`HTTP error! status: ${response.status}`);
+		} else {
+			console.log('Image uploaded successfully');
+		}
 	}
 
 	return (
@@ -32,12 +51,20 @@ export default function CharacterUploader() {
 									className="h-[240px] w-[240px] rounded-xl"
 									src={URL.createObjectURL(files[i])}
 								/>
-								<Button
-									className="absolute bottom-1 right-1 p-2 text-primary shadow-sm"
-									variant={'outline'}
-									onClick={() => removeImage(i)}>
-									remove
-								</Button>
+								<div className="absolute bottom-0 right-0 flex space-x-1">
+									<Button
+										className="p-2 text-primary shadow-sm"
+										variant={'outline'}
+										onClick={() => removeImage(i)}>
+										remove
+									</Button>
+									<Button
+										className="p-2 text-primary shadow-sm"
+										variant={'outline'}
+										onClick={() => uploadImage(files[i])}>
+										upload
+									</Button>
+								</div>
 							</div>
 						</div>
 					);
