@@ -12,30 +12,36 @@ export default function CharacterUploader() {
 		}
 	};
 
+	function removeImage(i: number) {
+		const newFiles = Array.from(files!);
+		newFiles.splice(i, 1);
+		setFiles(newFiles.length > 0 ? newFiles : null);
 	}
 
 	return (
 		<div className="flex flex-row flex-wrap justify-around gap-2">
-			{files && Array.from(files).map((_, i) => {
-				return (
-					<div
-						key={i}
-						className="h-[240px] w-[240px] cursor-pointer rounded-xl border-2 border-solid border-primary bg-secondary hover:bg-slate-200">
-						<div className="relative flex h-full flex-col items-center justify-center">
-							<img
-								key={i}
-								className="h-[240px] w-[240px] rounded-xl"
-								src={URL.createObjectURL(files[i])}
-							/>
-							<Button
-								className="absolute bottom-1 right-1 p-2 text-primary shadow-sm"
-								variant={'outline'}>
-								remove
-							</Button>
+			{files &&
+				files.map((_, i) => {
+					return (
+						<div
+							key={i}
+							className="h-[240px] w-[240px] cursor-pointer rounded-xl border-2 border-solid border-primary bg-secondary hover:bg-slate-200">
+							<div className="relative flex h-full flex-col items-center justify-center">
+								<img
+									key={i}
+									className="h-[240px] w-[240px] rounded-xl"
+									src={URL.createObjectURL(files[i])}
+								/>
+								<Button
+									className="absolute bottom-1 right-1 p-2 text-primary shadow-sm"
+									variant={'outline'}
+									onClick={() => removeImage(i)}>
+									remove
+								</Button>
+							</div>
 						</div>
-					</div>
-				);
-			})}
+					);
+				})}
 			<div className="relative h-[240px] w-[240px] cursor-pointer rounded-xl border-2 border-dashed border-primary bg-secondary hover:bg-slate-200">
 				<input
 					className="absolute bottom-0 left-0 right-0 top-0 cursor-pointer opacity-0"
