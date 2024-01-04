@@ -1,8 +1,25 @@
+import { useEffect, useState } from 'react';
+
 import CharacterModelList from '@/components/CharacterModelList';
 import GeneratedList from '@/components/GeneratedList';
 import PackageList from '@/components/PackageList';
+import axios from '@/lib/axios';
 
 export default function Dashboard() {
+
+	const [characterList, setCharacterList] = useState([]);
+
+	useEffect(() => {
+		axios
+			.get('/characters')
+			.then((response) => {
+				setCharacterList(response.data);
+			})
+			.catch((error) => {
+				console.error('Error fetching character list:', error);
+			});
+			console.log(characterList);
+	}, []);
 	return (
 		<div className="container flex min-h-full w-full flex-col p-5">
 			<CharacterModelList />
