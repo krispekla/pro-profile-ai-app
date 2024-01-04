@@ -2,11 +2,12 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Outlet, useNavigate } from 'react-router-dom';
 
 import { Button } from '@/components/ui/button';
-import { Session } from '@supabase/supabase-js';
-import { useEffect } from 'react';
-import { ThemeProvider } from '../components/ThemeProvider';
-import useStore from '../store/store';
 import Footer from './Footer';
+import { Session } from '@supabase/supabase-js';
+import { ThemeProvider } from '../components/ThemeProvider';
+import axios from '@/lib/axios';
+import { useEffect } from 'react';
+import useStore from '../store/store';
 
 export default function Layout() {
 	const navigate = useNavigate();
@@ -17,11 +18,13 @@ export default function Layout() {
 	useEffect(() => {
 		supaClient.auth.getSession().then(({ data: { session } }) => {
 			setSession(session as Session);
+			axios.defaults.headers.common['Authorization'] = `Bearer ${session?.access_token}`;
 		});
 		const {
 			data: { subscription },
 		} = supaClient.auth.onAuthStateChange((_event, session) => {
 			setSession(session as Session);
+			axios.defaults.headers.common['Authorization'] = `Bearer ${session?.access_token}`;
 		});
 
 		return () => subscription.unsubscribe();
