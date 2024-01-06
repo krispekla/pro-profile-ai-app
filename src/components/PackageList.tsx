@@ -1,6 +1,12 @@
 import PackageCard from './PackageCard';
+import axios from '@/lib/axios';
+import { useQuery } from '@tanstack/react-query';
 
 function PackageList() {
+	useQuery({
+		queryKey: ['packages'],
+		queryFn: async () => axios.get('/packages'),
+	});
 	return (
 		<section>
 			<h2 className="text-3xl font-bold text-primary">Packages</h2>
