@@ -1,7 +1,27 @@
 import CharacterModelCard from './CharacterModelCard';
 import CharacterModelCardAdd from './CharacterModelCardAdd';
+import { Key } from 'react';
+import axios from '@/lib/axios';
+import { useQuery } from '@tanstack/react-query';
 
 function CharacterModelList() {
+	const {
+		isError,
+		error,
+		isFetched,
+		data: characters,
+	} = useQuery({
+		queryKey: ['characters'],
+		queryFn: async () => axios.get('/characters'),
+	});
+
+	if (isError) {
+		return <div>Error: {error.message}</div>;
+	}
+	if (!isFetched) {
+		return <div>Loading...</div>;
+	}
+
 	return (
 		<section>
 			<h2 className="text-3xl font-light text-primary">
@@ -11,7 +31,7 @@ function CharacterModelList() {
 				className="my-3 flex h-72 w-full
 						space-x-4 rounded-xl border border-gray-400 bg-secondary p-4
 						pb-5">
-				{[1, 2, 3].map((_, i) => (
+				{characters?.data.map((_: unknown, i: Key | null | undefined) => (
 					<CharacterModelCard
 						key={i}
 						selected={i === 0}
