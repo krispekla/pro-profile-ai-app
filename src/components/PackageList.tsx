@@ -2,8 +2,17 @@ import PackageCard from './PackageCard';
 import axios from '@/lib/axios';
 import { useQuery } from '@tanstack/react-query';
 
+// TODO: Create DTO that will combine all Packages, bought, available etc.
+export interface PackageItem {
+	ID: number;
+	Name: string;
+	Description: string;
+	CoverImgURL: string;
+	Created: string;
+}
+
 function PackageList() {
-	useQuery({
+	const { isSuccess, data: packages } = useQuery({
 		queryKey: ['packages'],
 		queryFn: async () => axios.get('/packages'),
 	});
@@ -16,14 +25,18 @@ function PackageList() {
 				style={{ minHeight: '40rem' }}>
 				<h3 className="text-2xl font-bold">Bought</h3>
 				<div className="mt-3 flex h-52 flex-row space-x-5">
-					<PackageCard bought />
-					<PackageCard bought />
+					{/* <PackageCard bought />
+					<PackageCard bought /> */}
 				</div>
 				<h3 className="mt-12 text-2xl font-bold">Available</h3>
 				<div className="mt-3 flex h-52 flex-row space-x-5">
-					<PackageCard />
-					<PackageCard />
-					<PackageCard />
+					{isSuccess &&
+						packages?.data.map((pckg: PackageItem) => (
+							<PackageCard
+								key={pckg.ID}
+								package={pckg}
+							/>
+						))}
 				</div>
 			</div>
 		</section>
