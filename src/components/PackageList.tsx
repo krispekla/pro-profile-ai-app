@@ -14,7 +14,7 @@ export interface PackageItem {
 function PackageList() {
 	const { isSuccess, data: packages } = useQuery({
 		queryKey: ['packages'],
-		queryFn: async () => axios.get('/packages'),
+		queryFn: async () => axios.get('/packages/listing'),
 	});
 	return (
 		<section>
