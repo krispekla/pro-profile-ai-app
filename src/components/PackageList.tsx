@@ -1,3 +1,4 @@
+import { GeneratedPackageStatusEnum } from '@/types/enum';
 import PackageCard from './PackageCard';
 import axios from '@/lib/axios';
 import { useQuery } from '@tanstack/react-query';
@@ -11,11 +12,25 @@ export interface PackageItem {
 	Created: string;
 }
 
+export interface PackageGenerated {
+	id: number;
+	status: GeneratedPackageStatusEnum;
+	cover_img_url: string;
+	updated: string;
+	package_id: number;
+}
+
 function PackageList() {
 	const { isSuccess, data: packages } = useQuery({
 		queryKey: ['packages'],
 		queryFn: async () => axios.get('/packages/listing'),
 	});
+
+	const { data: generatedPackages } = useQuery({
+		queryKey: ['packages-generated'],
+		queryFn: async () => axios.get('/packages/generated'),
+	});
+
 	return (
 		<section>
 			<h2 className="text-3xl font-bold text-primary">Packages</h2>
