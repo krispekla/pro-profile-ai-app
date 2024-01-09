@@ -7,9 +7,14 @@ import { useState } from 'react';
 interface PackageCardProps {
 	bought?: boolean;
 	package: PackageItem;
+	coverImgURL?: string;
 }
 
-export default function PackageCard({ bought = false, package: pckg }: PackageCardProps) {
+export default function PackageCard({
+	bought = false,
+	package: pckg,
+	coverImgURL,
+}: PackageCardProps) {
 	const navigate = useNavigate();
 	const [open, setOpen] = useState(false);
 	return (
