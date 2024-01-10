@@ -3,6 +3,7 @@ import GeneratedList from '@/components/GeneratedList';
 import PackageList from '@/components/PackageList';
 
 export default function Dashboard() {
+	// TODO: Move all requests up from packagelist and send as dependency
 	return (
 		<div className="container flex min-h-full w-full flex-col p-5">
 			<CharacterModelList />
@@ -11,6 +12,7 @@ export default function Dashboard() {
 				<p>Selected Character</p>
 			</div>
 			<GeneratedList />
+			{/* Create not used section */}
 			<PackageList />
 		</div>
 	);
