@@ -29,7 +29,7 @@ export default function PackageCard({
 		<>
 			<div
 				className="relative h-52 w-72 cursor-pointer shadow-lg shadow-primary hover:-translate-y-1"
-				onClick={() => !bought && navigate('/package/5')}>
+				onClick={() => !bought && navigate(`/package/${pckg.id}`)}>
 				{coverImgComputed && (
 					<>
 						<img
@@ -47,7 +47,7 @@ export default function PackageCard({
 						variant="default"
 						onClick={(e) => {
 							e.stopPropagation();
-							bought ? setOpen(!open) : navigate('/package/5');
+							bought ? setOpen(!open) : navigate(`/package/${pckg.id}`);
 						}}>
 						{bought ? 'Generate' : 'Buy'}
 					</Button>
