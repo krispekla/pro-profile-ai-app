@@ -4,7 +4,6 @@ import axios from '@/lib/axios';
 import { useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
 
-// TODO: Create DTO that will combine all Packages, bought, available etc.
 export interface PackageItem {
 	ID: number;
 	Name: string;
@@ -33,8 +32,10 @@ function PackageList() {
 	});
 
 	const filteredGeneratedPackages = useMemo(() => {
-		return generatedPackages?.data.filter(
-			(p: PackageGenerated) => [GeneratedPackageStatusEnum.Generated, GeneratedPackageStatusEnum.Processing].includes(p.status)
+		return generatedPackages?.data.filter((p: PackageGenerated) =>
+			[GeneratedPackageStatusEnum.Generated, GeneratedPackageStatusEnum.Processing].includes(
+				p.status
+			)
 		);
 	}, [generatedPackages]);
 
@@ -47,12 +48,12 @@ function PackageList() {
 	const productListingExist = isSuccess && packages?.data.length > 0;
 
 	const generatedPcksExist =
-	productListingExist &&
+		productListingExist &&
 		generatedPackages?.data.filter(
 			(p: PackageGenerated) => p.status === GeneratedPackageStatusEnum.Generated
 		).length > 0;
 	const pckgNotUsedExist =
-	productListingExist &&
+		productListingExist &&
 		generatedPackages?.data.filter(
 			(p: PackageGenerated) => p.status !== GeneratedPackageStatusEnum.Generated
 		).length > 0;
@@ -80,7 +81,7 @@ function PackageList() {
 				)}
 				{pckgNotUsedExist && (
 					<>
-						<h3 className="text-1xl font-bold">Available</h3>
+						<h3 className="text-1xl font-bold mt-5">Available</h3>
 						<div className="mt-3 flex h-52 flex-row space-x-5">
 							{filteredGeneratedPackagesNotUsed.map((pckg: PackageGenerated) => (
 								<PackageCard

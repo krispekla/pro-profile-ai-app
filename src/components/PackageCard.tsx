@@ -31,11 +31,14 @@ export default function PackageCard({
 				className="relative h-52 w-72 cursor-pointer shadow-lg shadow-primary hover:-translate-y-1"
 				onClick={() => !bought && navigate('/package/5')}>
 				{coverImgComputed && (
-					<img
-						className="absolute left-0 top-0 h-full w-full object-cover"
-						src={coverImgComputed}
-						alt={pckg.Description}
-					/>
+					<>
+						<img
+							className="absolute left-0 top-0 h-full w-full object-cover"
+							src={coverImgComputed}
+							alt={pckg.Description}
+						/>
+						<div className="absolute left-0 top-0 h-full w-full bg-black bg-opacity-40"></div>
+					</>
 				)}
 				<div className="absolute bottom-0 left-0 right-0 top-0 flex h-full w-full items-center justify-center shadow-2xl">
 					<span className="text-2xl font-bold text-white">{pckg.Name}</span>
