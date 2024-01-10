@@ -81,7 +81,7 @@ function PackageList() {
 				)}
 				{pckgNotUsedExist && (
 					<>
-						<h3 className="text-1xl font-bold mt-5">Available</h3>
+						<h3 className="text-1xl font-bold mt-5">Not used</h3>
 						<div className="mt-3 flex h-52 flex-row space-x-5">
 							{filteredGeneratedPackagesNotUsed.map((pckg: PackageGenerated) => (
 								<PackageCard
