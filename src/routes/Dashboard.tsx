@@ -16,8 +16,6 @@ export interface PackageGenerated {
 }
 
 export default function Dashboard() {
-	// TODO: Move all requests up from packagelist and send as dependency
-
 	const { isSuccess, data: packages } = useQuery({
 		queryKey: ['packages'],
 		queryFn: async () => axios.get('/packages/listing'),
