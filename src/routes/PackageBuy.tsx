@@ -1,6 +1,7 @@
 import { EmbeddedCheckout, EmbeddedCheckoutProvider } from '@stripe/react-stripe-js';
 import { useEffect, useState } from 'react';
 
+import axios from '@/lib/axios';
 import useStore from '@/store/store';
 
 export default function PackageBuy() {
@@ -18,13 +19,19 @@ export default function PackageBuy() {
 	// 	}
 	// }, []);
 	useEffect(() => {
-		// Create a Checkout Session as soon as the page loads
-		fetch(`${import.meta.env.VITE_API_URL}/checkout/sessions`, {
-			method: 'POST',
-		})
-			.then((res) => res.json())
-			.then((data) => setClientSecret(data.clientSecret));
+		setCheckoutClientSecret();
 	}, []);
+
+	async function setCheckoutClientSecret() {
+		try {
+			const res = await axios.post(`${import.meta.env.VITE_API_URL}/checkout/sessions`);
+			if (res.status === 201 && res.data) {
+				setClientSecret(res.data.clientSecret);
+			}
+		} catch (error) {
+			// TODO: 'Handle error'
+		}
+	}
 
 	// const handlePayment = () => {
 	// 	// Simulate successful payment
