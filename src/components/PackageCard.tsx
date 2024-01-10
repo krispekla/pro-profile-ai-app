@@ -20,11 +20,11 @@ export default function PackageCard({
 	const [open, setOpen] = useState(false);
 
 	const coverImgComputed = useMemo(() => {
-		if (typeof coverImgURL === 'undefined' && typeof pckg.CoverImgURL === 'undefined') {
+		if (typeof coverImgURL === 'undefined' && typeof pckg.cover_img_url === 'undefined') {
 			return '';
 		}
-		return coverImgURL || pckg.CoverImgURL || '';
-	}, [coverImgURL, pckg.CoverImgURL]);
+		return coverImgURL || pckg.cover_img_url || '';
+	}, [coverImgURL, pckg.cover_img_url]);
 	return (
 		<>
 			<div
@@ -35,13 +35,13 @@ export default function PackageCard({
 						<img
 							className="absolute left-0 top-0 h-full w-full object-cover"
 							src={coverImgComputed}
-							alt={pckg.Description}
+							alt={pckg.description}
 						/>
 						<div className="absolute left-0 top-0 h-full w-full bg-black bg-opacity-40"></div>
 					</>
 				)}
 				<div className="absolute bottom-0 left-0 right-0 top-0 flex h-full w-full items-center justify-center shadow-2xl">
-					<span className="text-2xl font-bold text-white">{pckg.Name}</span>
+					<span className="text-2xl font-bold text-white">{pckg.name}</span>
 					<Button
 						className="absolute bottom-0 left-0 right-0 mx-auto mb-5 w-1/2"
 						variant="default"

@@ -69,7 +69,7 @@ export default function Dashboard() {
 						<GeneratedCard
 							key={`generated-${pckg.id}${pckg.cover_img_url}`}
 							id={pckg.id}
-							packageTitle={packages?.data.find((p: PackageItem) => p.ID === pckg.package_id).Name}
+							packageTitle={packages?.data.find((p: PackageItem) => p.id === pckg.package_id).Name}
 							characterName="John Doe"
 						/>
 					))}
@@ -83,7 +83,7 @@ export default function Dashboard() {
 						<PackageCard
 							bought={true}
 							key={`not-used-${pckg.id}${pckg.cover_img_url}`}
-							package={packages?.data.find((p: PackageItem) => p.ID === pckg.package_id)}
+							package={packages?.data.find((p: PackageItem) => p.id === pckg.package_id)}
 							coverImgURL={pckg.cover_img_url}
 						/>
 					))}
@@ -93,7 +93,7 @@ export default function Dashboard() {
 				<PackageListRenderer title="Packages">
 					{packages?.data.map((pckg: PackageItem) => (
 						<PackageCard
-							key={pckg.ID}
+							key={pckg.id}
 							package={pckg}
 						/>
 					))}

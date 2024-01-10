@@ -1,7 +1,9 @@
 export type PackageItem = {
-    ID: number;
-    Name: string;
-    Description: string;
-    CoverImgURL: string;
-    Created: string;
+	id: number;
+	name: string;
+	description: string;
+	cover_img_url: string;
+	created: string;
+	pricing: number;
+	imgs: { url: string };
 };
