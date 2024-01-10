@@ -66,15 +66,12 @@ export default function Dashboard() {
 					titleClass="text-green-400"
 					wrapperClass="border-green-300 bg-green-50 shadow-2xl shadow-green-200">
 					{filteredGeneratedPackages.map((pckg: PackageGenerated) => (
-						<>
-							<GeneratedCard
-								id={pckg.id}
-								packageTitle={
-									packages?.data.find((p: PackageItem) => p.ID === pckg.package_id).Name
-								}
-								characterName="John Doe"
-							/>
-						</>
+						<GeneratedCard
+							key={`generated-${pckg.id}${pckg.cover_img_url}`}
+							id={pckg.id}
+							packageTitle={packages?.data.find((p: PackageItem) => p.ID === pckg.package_id).Name}
+							characterName="John Doe"
+						/>
 					))}
 				</PackageListRenderer>
 			)}
@@ -84,6 +81,7 @@ export default function Dashboard() {
 					sectionClass="mt-6">
 					{notUsedPackages?.map((pckg: PackageGenerated) => (
 						<PackageCard
+							bought={true}
 							key={`not-used-${pckg.id}${pckg.cover_img_url}`}
 							package={packages?.data.find((p: PackageItem) => p.ID === pckg.package_id)}
 							coverImgURL={pckg.cover_img_url}

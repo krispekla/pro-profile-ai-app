@@ -2,7 +2,7 @@ import { useMemo, useState } from 'react';
 
 import { Button } from './ui/button';
 import PackageGenerateModal from './PackageGenerateModal';
-import { PackageItem } from './PackageList';
+import { PackageItem } from '@/types/package';
 import { useNavigate } from 'react-router';
 
 interface PackageCardProps {
