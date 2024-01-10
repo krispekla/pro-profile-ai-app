@@ -1,4 +1,5 @@
 import CharacterModelList from '@/components/CharacterModelList';
+import GeneratedCard from '@/components/GeneratedCard';
 import { GeneratedPackageStatusEnum } from '@/types/enum';
 import PackageCard from '@/components/PackageCard';
 import { PackageItem } from '@/types/package';
@@ -65,11 +66,15 @@ export default function Dashboard() {
 					titleClass="text-green-400"
 					wrapperClass="border-green-300 bg-green-50 shadow-2xl shadow-green-200">
 					{filteredGeneratedPackages.map((pckg: PackageGenerated) => (
-						<PackageCard
-							key={`used-${pckg.id}`}
-							package={packages?.data.find((p: PackageItem) => p.ID === pckg.package_id)}
-							coverImgURL={pckg.cover_img_url}
-						/>
+						<>
+							<GeneratedCard
+								id={pckg.id}
+								packageTitle={
+									packages?.data.find((p: PackageItem) => p.ID === pckg.package_id).Name
+								}
+								characterName="John Doe"
+							/>
+						</>
 					))}
 				</PackageListRenderer>
 			)}
