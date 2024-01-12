@@ -70,6 +70,7 @@ export default function Dashboard() {
 			{generatedPcksExist && (
 				<PackageListRenderer
 					title="Generated"
+					sectionClass="mt-12"
 					titleClass="text-green-400"
 					wrapperClass="border-green-300 bg-green-50 shadow-2xl shadow-green-200">
 					{filteredGeneratedPackages.map((pckg: PackageGenerated) => (
@@ -85,7 +86,8 @@ export default function Dashboard() {
 			{pckgNotUsedExist && (
 				<PackageListRenderer
 					title="Ready to use packages"
-					sectionClass="mt-6">
+					sectionClass="mt-12"
+					wrapperClass="border-yellow-300 bg-yellow-50 shadow-2xl shadow-yellow-200">
 					{notUsedPackages?.map((pckg: PackageGenerated) => (
 						<PackageCard
 							bought={true}
@@ -98,7 +100,10 @@ export default function Dashboard() {
 			)}
 			{isFetchingPackageListing && <PackageListRendererSkeleton />}
 			{productListingExist && (
-				<PackageListRenderer title="Packages">
+				<PackageListRenderer
+					title="Packages"
+					sectionClass="mt-12"
+					wrapperClass="border-cyan-300 bg-cyan-50 shadow-2xl shadow-cyan-200">
 					{packages?.data.map((pckg: PackageItem) => (
 						<PackageCard
 							key={pckg.id}
