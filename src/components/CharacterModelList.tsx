@@ -33,10 +33,7 @@ function CharacterModelList() {
 						space-x-4 rounded-xl border border-gray-400 bg-secondary p-4
 						pb-5">
 				{characters?.data.map((_: unknown, i: Key | null | undefined) => (
-					<CharacterModelCard
-						key={i}
-						selected={i === 0}
-					/>
+					<CharacterModelCard key={i} />
 				))}
 				<CharacterModelCardAdd />
 			</div>

@@ -8,16 +8,9 @@ import {
 
 import { PiCaretDownBold } from 'react-icons/pi';
 
-interface CharacterModelCardProps {
-	selected?: boolean;
-}
-
-function CharacterModelCard({ selected }: CharacterModelCardProps) {
+function CharacterModelCard() {
 	return (
-		<div
-			className={`flex h-full w-52 max-w-sm cursor-pointer flex-col rounded-sm 
-			hover:bg-yellow-100
-			 ${selected && 'rounded-lg border-2 border-yellow-300 bg-yellow-100'}`}>
+		<div className="flex h-full w-52 max-w-sm cursor-pointer flex-col rounded-sm">
 			<Avatar className="mx-auto mt-3 h-40 w-40">
 				<AvatarImage
 					src="https://github.com/shadcn.png"
@@ -25,7 +18,7 @@ function CharacterModelCard({ selected }: CharacterModelCardProps) {
 				/>
 			</Avatar>
 			<DropdownMenu>
-				<DropdownMenuTrigger className="mx-auto my-auto flex flex-nowrap bg-primary pl-4 pr-2 py-2 text-secondary items-center">
+				<DropdownMenuTrigger className="mx-auto my-auto flex flex-nowrap items-center bg-primary py-2 pl-4 pr-2 text-secondary">
 					<div className="max-w-sm flex-nowrap">John Doe</div>
 					<PiCaretDownBold className="ml-3 text-lg" />
 				</DropdownMenuTrigger>
