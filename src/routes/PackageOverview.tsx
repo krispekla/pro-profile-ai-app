@@ -21,7 +21,12 @@ export default function PackageOverview() {
 		// For example, you can navigate to a checkout page or perform an API call
 	};
 
-	const { isSuccess, data: packages } = useQuery({
+	const {
+		isFetching,
+		isError,
+		isSuccess,
+		data: packages,
+	} = useQuery({
 		queryKey: ['packages'],
 		queryFn: async () => axios.get('/packages/listing'),
 	});
@@ -33,6 +38,14 @@ export default function PackageOverview() {
 		isSuccess &&
 		packages?.data.length > 0 &&
 		packages?.data.find((x: PackageItem) => x.id === parseInt(id))?.imgs.length > 0;
+
+	// TODO: Enhance the loading and error states
+	if (isFetching) {
+		return <div>Loading...</div>;
+	}
+	if (isError) {
+		return <div>Service is currently unavailable. Please try again later.</div>;
+	}
 
 	return (
 		<div className="mt-6 flex flex-col items-center">
