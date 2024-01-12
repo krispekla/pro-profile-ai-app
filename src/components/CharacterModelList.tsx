@@ -1,5 +1,6 @@
 import CharacterModelCard from './CharacterModelCard';
 import CharacterModelCardAdd from './CharacterModelCardAdd';
+import CharacterModelListSkeleton from './skeletons/CharacterModelListSkeleton';
 import { Key } from 'react';
 import axios from '@/lib/axios';
 import { useQuery } from '@tanstack/react-query';
@@ -8,7 +9,7 @@ function CharacterModelList() {
 	const {
 		isError,
 		error,
-		isFetched,
+		isFetching,
 		data: characters,
 	} = useQuery({
 		queryKey: ['characters'],
@@ -18,8 +19,8 @@ function CharacterModelList() {
 	if (isError) {
 		return <div>Error: {error.message}</div>;
 	}
-	if (!isFetched) {
-		return <div>Loading...</div>;
+	if (isFetching) {
+		return <CharacterModelListSkeleton />;
 	}
 
 	return (

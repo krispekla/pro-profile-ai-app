@@ -4,6 +4,7 @@ import { GeneratedPackageStatusEnum } from '@/types/enum';
 import PackageCard from '@/components/PackageCard';
 import { PackageItem } from '@/types/package';
 import PackageListRenderer from '@/components/PackageListRenderer';
+import PackageListRendererSkeleton from '@/components/skeletons/PackageListRendererSkeleton';
 import axios from '@/lib/axios';
 import { useMemo } from 'react';
 import { useQuery } from '@tanstack/react-query';
@@ -17,12 +18,16 @@ export interface PackageGenerated {
 }
 
 export default function Dashboard() {
-	const { isSuccess, data: packages } = useQuery({
+	const {
+		isFetching: isFetchingPackageListing,
+		isSuccess,
+		data: packages,
+	} = useQuery({
 		queryKey: ['packages'],
 		queryFn: async () => axios.get('/packages/listing'),
 	});
 
-	const { data: generatedPackages } = useQuery({
+	const { isFetching: isFetchingGenerated, data: generatedPackages } = useQuery({
 		queryKey: ['packages-generated'],
 		queryFn: async () => axios.get('/packages/generated'),
 	});
@@ -56,10 +61,12 @@ export default function Dashboard() {
 	return (
 		<div className="container flex min-h-full w-full flex-col p-5">
 			<CharacterModelList />
-			<div className="flex items-center justify-end">
-				<div className="mr-2 h-5 w-5 rounded-full bg-yellow-300"></div>
-				<p>Selected Character</p>
-			</div>
+			{isFetchingGenerated && (
+				<>
+					<PackageListRendererSkeleton />
+					<PackageListRendererSkeleton />
+				</>
+			)}
 			{generatedPcksExist && (
 				<PackageListRenderer
 					title="Generated"
@@ -89,6 +96,7 @@ export default function Dashboard() {
 					))}
 				</PackageListRenderer>
 			)}
+			{isFetchingPackageListing && <PackageListRendererSkeleton />}
 			{productListingExist && (
 				<PackageListRenderer title="Packages">
 					{packages?.data.map((pckg: PackageItem) => (
