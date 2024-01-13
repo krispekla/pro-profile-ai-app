@@ -11,7 +11,7 @@ export default function PackageBuyReturn() {
 		const urlParams = new URLSearchParams(queryString);
 		const sessionId = urlParams.get('session_id');
 
-		fetch(`${import.meta.env.VITE_API_URL}/checkout/sessions?session_id=${sessionId}`)
+		fetch(`${import.meta.env.VITE_API_URL}/payment/checkout?session_id=${sessionId}`)
 			.then((res) => res.json())
 			.then((data) => {
 				setStatus(data.status);

@@ -51,7 +51,7 @@ export default function PackageBuy() {
 				productIds: pckg.pricing.map((x) => Array(quantity).fill(x.StripeProductID)).flat(),
 			};
 
-			const res = await axios.post(`${import.meta.env.VITE_API_URL}/checkout/sessions`, body);
+			const res = await axios.post(`${import.meta.env.VITE_API_URL}/payment/checkout`, body);
 			if (res.status === 201 && res.data) {
 				setClientSecret(res.data.clientSecret);
 			}
