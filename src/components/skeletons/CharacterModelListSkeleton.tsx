@@ -2,8 +2,8 @@ import { Skeleton } from '@/components/ui/skeleton';
 
 function CharacterModelListSkeleton() {
 	return (
-		<div className="my-3 flex h-72 w-full space-x-4 overflow-hidden rounded-xl border p-4 pb-5">
-			{Array.from({ length: 4 }).map((_, index) => (
+		<div className="my-3 flex h-72 w-full space-x-12 justify-between overflow-hidden rounded-xl border p-4 pb-5">
+			{Array.from({ length: 6 }).map((_, index) => (
 				<div
 					key={index}
 					className="relative h-72">
