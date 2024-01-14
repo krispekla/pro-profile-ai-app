@@ -8,7 +8,6 @@ import { useQuery } from '@tanstack/react-query';
 function CharacterModelList() {
 	const {
 		isError,
-		error,
 		isFetching,
 		data: characters,
 	} = useQuery({
@@ -17,7 +16,11 @@ function CharacterModelList() {
 	});
 
 	if (isError) {
-		return <div>Error: {error.message}</div>;
+		return (
+			<div className="mt-6 flex justify-center">
+				<p>Service is currently down. Please try again later.</p>
+			</div>
+		);
 	}
 	if (isFetching) {
 		return <CharacterModelListSkeleton />;
