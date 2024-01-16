@@ -35,9 +35,10 @@ function CharacterModelList() {
 				className="my-3 flex h-72 w-full
 						space-x-4 rounded-xl border border-gray-400 bg-secondary p-4
 						pb-5">
-				{characters?.data.map((_: unknown, i: Key | null | undefined) => (
-					<CharacterModelCard key={i} />
-				))}
+				{characters?.data.length > 0 &&
+					characters?.data.map((_: unknown, i: Key | null | undefined) => (
+						<CharacterModelCard key={i} />
+					))}
 				<CharacterModelCardAdd />
 			</div>
 		</section>
