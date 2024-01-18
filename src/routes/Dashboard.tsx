@@ -33,6 +33,9 @@ export default function Dashboard() {
 	});
 
 	const filteredGeneratedPackages = useMemo(() => {
+		if (generatedPackages === undefined || !generatedPackages?.data) {
+			return []
+		}
 		return generatedPackages?.data.filter((p: PackageGenerated) =>
 			[GeneratedPackageStatusEnum.Generated, GeneratedPackageStatusEnum.Processing].includes(
 				p.status
@@ -41,6 +44,9 @@ export default function Dashboard() {
 	}, [generatedPackages]);
 
 	const notUsedPackages = useMemo(() => {
+		if (generatedPackages === undefined || !generatedPackages?.data) {
+			return []
+		}
 		return generatedPackages?.data.filter(
 			(p: PackageGenerated) => p.status !== GeneratedPackageStatusEnum.Generated
 		);
@@ -50,12 +56,12 @@ export default function Dashboard() {
 
 	const generatedPcksExist =
 		productListingExist &&
-		generatedPackages?.data.filter(
+		generatedPackages?.data?.filter(
 			(p: PackageGenerated) => p.status === GeneratedPackageStatusEnum.Generated
 		).length > 0;
 	const pckgNotUsedExist =
 		productListingExist &&
-		generatedPackages?.data.filter(
+		generatedPackages?.data?.filter(
 			(p: PackageGenerated) => p.status !== GeneratedPackageStatusEnum.Generated
 		).length > 0;
 	return (
