@@ -1,12 +1,13 @@
+import { Navigate, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
-import { Navigate } from 'react-router-dom';
 import axios from '@/lib/axios';
 import { useQuery } from '@tanstack/react-query';
 
 export default function PackageBuyReturn() {
 	const [sessionId, setSessionId] = useState('');
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		const queryString = window.location.search;
@@ -44,7 +45,11 @@ export default function PackageBuyReturn() {
 					processing. If you still don't see your package after a while, please contact our support
 					team at <a href="mailto:support@example.com">support@example.com</a>
 				</p>
-				<Button className="ml-auto mt-6">Go to Dashboard</Button>
+				<Button
+					className="ml-auto mt-6"
+					onClick={() => navigate('/')}>
+					Go to Dashboard
+				</Button>
 			</section>
 		);
 	}
