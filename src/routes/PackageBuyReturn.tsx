@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 
+import { Button } from '@/components/ui/button';
 import { Navigate } from 'react-router-dom';
 import axios from '@/lib/axios';
 import { useQuery } from '@tanstack/react-query';
@@ -33,13 +34,17 @@ export default function PackageBuyReturn() {
 	if (checkoutData?.data.status === 'complete') {
 		return (
 			<section
-				className=""
+				className="mx-auto mt-12 flex max-w-xl flex-col"
 				id="success">
-				<p className="mx-auto mt-6 max-w-md">
+				<h2 className="mb-3 text-2xl font-bold">Thank you for your purchase!</h2>
+				<p className="mx-auto">
 					We appreciate your business! A confirmation email will be sent to{' '}
-					<span className="font-bold">{checkoutData?.data.customerEmail}</span>. If you have any
-					questions, please email <a href="mailto:orders@example.com">orders@example.com</a>.
+					<span className="font-bold">{checkoutData?.data.customerEmail}</span>. In your dashboard,
+					you should see your package. If you don't see it immediately, please allow some time for
+					processing. If you still don't see your package after a while, please contact our support
+					team at <a href="mailto:support@example.com">support@example.com</a>
 				</p>
+				<Button className="ml-auto mt-6">Go to Dashboard</Button>
 			</section>
 		);
 	}
