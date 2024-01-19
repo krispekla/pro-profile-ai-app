@@ -49,13 +49,7 @@ export default function PackageCard({
 					<Badge className="text-md absolute left-1 top-1 h-8 w-8 items-center justify-center">
 						{count}
 					</Badge>
-
-					// <div className="absolute top-2 left-2 flex items-center justify-center w-8 h-8 bg-primary rounded-full">
-					// 	<span className="text-white text-sm font-medium">{count}</span>
-					// </div>
 				)}
-				{/* Rest of the code */}
-
 				<div className="absolute bottom-0 left-0 right-0 top-0 flex h-full w-full items-center justify-center shadow-2xl">
 					<span className="text-2xl font-bold text-white">{pckg.name}</span>
 					<Button
