@@ -12,7 +12,7 @@ function CharacterModelList() {
 		data: characters,
 	} = useQuery({
 		queryKey: ['characters'],
-		queryFn: async () => axios.get('/characters'),
+		queryFn: async () => axios.get('/character/list'),
 	});
 
 	if (isError) {
