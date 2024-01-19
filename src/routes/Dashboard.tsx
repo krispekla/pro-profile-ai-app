@@ -34,7 +34,7 @@ export default function Dashboard() {
 
 	const filteredGeneratedPackages = useMemo(() => {
 		if (generatedPackages === undefined || !generatedPackages?.data) {
-			return []
+			return [];
 		}
 		return generatedPackages?.data.filter((p: PackageGenerated) =>
 			[GeneratedPackageStatusEnum.Generated, GeneratedPackageStatusEnum.Processing].includes(
@@ -45,11 +45,29 @@ export default function Dashboard() {
 
 	const notUsedPackages = useMemo(() => {
 		if (generatedPackages === undefined || !generatedPackages?.data) {
-			return []
+			return [];
 		}
-		return generatedPackages?.data.filter(
-			(p: PackageGenerated) => p.status !== GeneratedPackageStatusEnum.Generated
-		);
+		return generatedPackages?.data
+			.filter(
+				(p: PackageGenerated & { count: number }) =>
+					p.status !== GeneratedPackageStatusEnum.Generated
+			)
+			.reduce(
+				(
+					acc: Array<PackageGenerated & { count: number; ids: Array<number> }>,
+					p: PackageGenerated
+				) => {
+					const existingPackage = acc.find((item) => item.package_id === p.package_id);
+					if (existingPackage) {
+						existingPackage.count += 1;
+						existingPackage.ids.push(p.id);
+					} else {
+						acc.push({ ...p, count: 1, ids: [p.id] });
+					}
+					return acc;
+				},
+				[]
+			);
 	}, [generatedPackages]);
 
 	const productListingExist = isSuccess && packages?.data.length > 0;
@@ -94,14 +112,18 @@ export default function Dashboard() {
 					title="Ready to use packages"
 					sectionClass="mt-12"
 					wrapperClass="border-yellow-300 bg-yellow-50 shadow-2xl shadow-yellow-200">
-					{notUsedPackages?.map((pckg: PackageGenerated) => (
-						<PackageCard
-							bought={true}
-							key={`not-used-${pckg.id}${pckg.cover_img_url}`}
-							package={packages?.data.find((p: PackageItem) => p.id === pckg.package_id)}
-							coverImgURL={pckg.cover_img_url}
-						/>
-					))}
+					{notUsedPackages?.map(
+						(pckg: PackageGenerated & { count: number; ids: Array<number> }) => (
+							<PackageCard
+								bought={true}
+								key={`not-used-${pckg.id}${pckg.cover_img_url}`}
+								package={packages?.data.find((p: PackageItem) => p.id === pckg.package_id)}
+								coverImgURL={pckg.cover_img_url}
+								count={pckg.count}
+								ids={pckg.ids}
+							/>
+						)
+					)}
 				</PackageListRenderer>
 			)}
 			{isFetchingPackageListing && <PackageListRendererSkeleton />}
